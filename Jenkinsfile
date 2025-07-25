@@ -30,8 +30,7 @@ pipeline {
         stage('Deliver') {
             agent any
             environment {
-                def pwd = pwd()
-                VOLUME = pwd + '/sources:/src'
+                VOLUME = pwd() + '/sources:/src'
                 IMAGE = 'cdrx/pyinstaller-linux:latest'
             }
             steps {
