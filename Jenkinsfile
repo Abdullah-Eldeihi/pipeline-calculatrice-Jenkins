@@ -30,12 +30,10 @@ pipeline {
         stage('Deliver') {
             agent any
             environment {
-                def pwd = pwd()
-                VOLUME = "${pwd}'/sources:/src'"
+                VOLUME = "/var/jenkins_home/workspace/pipeline/project/11/sources:/src"
                 IMAGE = 'cdrx/pyinstaller-linux:latest'
             }
             steps {
-                echo "$pwd"
                 echo "${VOLUME}"
                 dir(path: env.BUILD_ID) {
                     unstash(name: 'compiled-results')
